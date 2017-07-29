@@ -1,6 +1,5 @@
 package io.github.Theray070696.raycore;
 
-import io.github.Theray070696.raycore.command.CommandRay;
 import io.github.Theray070696.raycore.lib.ModInfo;
 import io.github.Theray070696.raycore.network.PacketPlaySoundToAll;
 import io.github.Theray070696.raycore.proxy.IProxy;
@@ -10,7 +9,6 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
@@ -54,11 +52,5 @@ public class RayCore
         LogHelper.info("Post-Init");
         
         LogHelper.info("Post-Init Complete");
-    }
-
-    @Mod.EventHandler
-    public void serverStart(FMLServerStartingEvent event)
-    {
-        event.registerServerCommand(new CommandRay());
     }
 }
