@@ -1,24 +1,30 @@
 package io.github.Theray070696.raycore.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import io.github.Theray070696.raycore.RayCore;
+import io.github.Theray070696.raycore.item.ItemModelProvider;
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
 /**
- * Created by Theray on 8/27/2015.
+ * Created by Theray070696 on 8/27/2015.
  */
-public class BlockRay extends Block
+public class BlockRay extends Block implements ItemModelProvider
 {
     private String modID;
     
@@ -29,26 +35,31 @@ public class BlockRay extends Block
 
     public BlockRay(boolean addToCreativeTab, String modID)
     {
-        this(Material.rock);
+        this(Material.ROCK, addToCreativeTab, modID);
+    }
+
+    public BlockRay(Material material, boolean addToCreativeTab, String modID)
+    {
+        super(material);
 
         if(addToCreativeTab)
         {
-            this.setCreativeTab(CreativeTabs.tabBlock);
+            this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
         }
         
         this.modID = modID;
 
         this.setHardness(1.5F);
         this.setResistance(10.0F);
-        this.setStepSound(Block.soundTypeMetal);
+        this.setSoundType(SoundType.METAL);
     }
 
-    public BlockRay(Material material)
+    @Override
+    public Block setUnlocalizedName(String name)
     {
-        super(material);
-
-        this.setHardness(1.5F);
-        this.setResistance(10.0F);
+        super.setUnlocalizedName(name);
+        this.setRegistryName(modID + ":" + name);
+        return this;
     }
 
     @Override
@@ -57,28 +68,21 @@ public class BlockRay extends Block
         return String.format("tile.%s%s", this.modID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
     }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister iconRegister)
-    {
-        blockIcon = iconRegister.registerIcon(String.format("%s", getUnwrappedUnlocalizedName(this.getUnlocalizedName())));
-    }
-
     protected String getUnwrappedUnlocalizedName(String unlocalizedName)
     {
         return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
     }
 
     @Override
-    public void breakBlock(World world, int x, int y, int z, Block block, int meta)
+    public void breakBlock(World world, BlockPos pos, IBlockState state)
     {
-        dropInventory(world, x, y, z);
-        super.breakBlock(world, x, y, z, block, meta);
+        dropInventory(world, pos);
+        super.breakBlock(world, pos, state);
     }
 
-    protected void dropInventory(World world, int x, int y, int z)
+    protected void dropInventory(World world, BlockPos pos)
     {
-        TileEntity tileEntity = world.getTileEntity(x, y, z);
+        TileEntity tileEntity = world.getTileEntity(pos);
 
         if(!(tileEntity instanceof IInventory))
         {
@@ -99,7 +103,7 @@ public class BlockRay extends Block
                 float dY = rand.nextFloat() * 0.8F + 0.1F;
                 float dZ = rand.nextFloat() * 0.8F + 0.1F;
 
-                EntityItem entityItem = new EntityItem(world, x + dX, y + dY, z + dZ, itemStack.copy());
+                EntityItem entityItem = new EntityItem(world, pos.getX() + dX, pos.getY() + dY, pos.getZ() + dZ, itemStack.copy());
 
                 if(itemStack.hasTagCompound())
                 {
@@ -114,5 +118,11 @@ public class BlockRay extends Block
                 itemStack.stackSize = 0;
             }
         }
+    }
+
+    @Override
+    public void registerItemModel(Item itemBlock)
+    {
+        RayCore.proxy.registerItemRenderer(itemBlock, 0, modID, getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
     }
 }

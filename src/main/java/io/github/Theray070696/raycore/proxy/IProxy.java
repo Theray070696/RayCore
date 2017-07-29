@@ -1,11 +1,14 @@
 package io.github.Theray070696.raycore.proxy;
 
-import cpw.mods.fml.relauncher.Side;
+import net.minecraft.item.Item;
+import net.minecraftforge.fml.relauncher.Side;
 
 /**
- * Created by Theray on 1/22/2017.
+ * Created by Theray070696 on 1/22/2017.
  */
 public interface IProxy
 {
     public Side getSide();
+
+    public void registerItemRenderer(Item item, int meta, String modID, String id);
 }

@@ -1,51 +1,38 @@
 package io.github.Theray070696.raycore.item;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import io.github.Theray070696.raycore.RayCore;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemRecord;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
-import net.minecraft.util.WeightedRandomChestContent;
-import net.minecraft.world.World;
-import net.minecraftforge.common.ChestGenHooks;
-import net.minecraftforge.oredict.OreDictionary;
+import net.minecraft.util.SoundEvent;
 
 /**
- * Created by Theray on 1/12/2017.
+ * Created by Theray070696 on 1/12/2017.
  */
-public class ItemRayRecord extends ItemRecord
+public class ItemRayRecord extends ItemRecord implements ItemModelProvider
 {
     private String modID;
     
     public int recordLength = -1;
     
-    public ItemRayRecord(String modID, String recordName)
+    public ItemRayRecord(String modID, String recordName, int recordLength, SoundEvent sound)
     {
-        super(recordName);
+        super(modID + ":" + recordName, sound);
 
         this.modID = modID;
-        ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(this, 0, 1, 1, 10));
-        this.setCreativeTab(CreativeTabs.tabMisc);
-    
-        OreDictionary.registerOre("record", this);
-    }
-    
-    public ItemRayRecord(String modID, String recordName, int recordLength)
-    {
-        this(modID, recordName);
-        
+        this.setCreativeTab(CreativeTabs.MISC);
+
         this.recordLength = recordLength;
     }
 
     @Override
-    public String getRecordNameLocal()
+    public Item setUnlocalizedName(String name)
     {
-        return StatCollector.translateToLocal(this.getUnlocalizedName() + ".desc");
+        super.setUnlocalizedName(name);
+        this.setRegistryName(modID + ":" + name);
+        return this;
     }
 
     @Override
@@ -72,9 +59,8 @@ public class ItemRayRecord extends ItemRecord
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister iconRegister)
+    public void registerItemModel(Item item)
     {
-        itemIcon = iconRegister.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1));
+        RayCore.proxy.registerItemRenderer(this, 0, modID, getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
     }
 }
