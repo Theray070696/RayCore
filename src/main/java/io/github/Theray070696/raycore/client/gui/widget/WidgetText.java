@@ -11,19 +11,26 @@ public class WidgetText extends Widget
     private int yPos;
     private String text;
     private int color;
+    private boolean dropShadow;
 
     public WidgetText(int xPos, int yPos, String text, int color)
+    {
+        this(xPos, yPos, text, color, false);
+    }
+
+    public WidgetText(int xPos, int yPos, String text, int color, boolean dropShadow)
     {
         this.xPos = xPos;
         this.yPos = yPos;
         this.text = text;
         this.color = color;
+        this.dropShadow = dropShadow;
     }
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks, FontRenderer fontRenderer)
     {
-        fontRenderer.drawString(text, xPos, yPos, color);
+        fontRenderer.drawString(text, xPos, yPos, color, dropShadow);
     }
 
     @Override
