@@ -7,8 +7,6 @@ import net.minecraft.client.gui.FontRenderer;
  */
 public class WidgetText extends Widget
 {
-    private int xPos;
-    private int yPos;
     private String text;
     private int color;
     private boolean dropShadow;
