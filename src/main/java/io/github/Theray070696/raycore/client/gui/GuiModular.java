@@ -60,6 +60,12 @@ public abstract class GuiModular extends GuiScreen
         widgets.add(widget);
     }
 
+    @Override
+    public boolean doesGuiPauseGame()
+    {
+        return false;
+    }
+
     /**
      * Initialize widgets here.
      */
