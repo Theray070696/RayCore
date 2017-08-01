@@ -10,13 +10,13 @@ public class WidgetWindowTest extends WidgetWindow
 {
     public WidgetWindowTest()
     {
-        super("Test Window", 80, 128, 50, 50);
+        super("Test Window", 128, 128, 50, 50);
     }
 
     @Override
     public void initializeFeatures()
     {
-        this.addFeature(new WindowButtonToggle(50, 17, 78, 26));
+        this.addFeature(new WindowButtonToggle(100, 17, 126, 26));
         this.addFeature(new WindowText(4, 17, "Test Button", 0x00bf00));
     }
 }
