@@ -11,7 +11,7 @@ public class GuiModularTest extends GuiModular
     @Override
     public void initializeWidgets()
     {
-        this.addWidget(new WidgetText(100, 100, "test", 0xffa0a0a0));
+        this.addWidget(new WidgetText(100, 100, "test", 0xffffff));
         this.addWidget(new WidgetWindowTest());
     }
 }
