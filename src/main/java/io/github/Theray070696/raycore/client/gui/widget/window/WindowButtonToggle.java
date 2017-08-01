@@ -25,7 +25,7 @@ public class WindowButtonToggle extends WindowFeature
     }
 
     @Override
-    public void drawScreen(int mouseX, int mouseY, float partialTicks, FontRenderer fontRenderer, int windowX, int windowY, int windowLength, int windowHeight)
+    public void drawScreen(int mouseX, int mouseY, float partialTicks, FontRenderer fontRenderer, int windowX, int windowY, int windowWidth, int windowHeight)
     {
         button(left + windowX, top + windowY, right + windowX, bottom + windowY);
         drawSmallString(fontRenderer, toggle ? "Enabled" : "Disabled", left + 4 + windowX, (bottom - 6) + windowY, 0xffffff);

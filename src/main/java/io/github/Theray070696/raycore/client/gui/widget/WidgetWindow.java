@@ -16,7 +16,7 @@ public abstract class WidgetWindow extends Widget
 
     private String windowTitle;
 
-    private int windowLength;
+    private int windowWidth;
     private int windowHeight;
 
     private int dragWindowX;
@@ -24,11 +24,11 @@ public abstract class WidgetWindow extends Widget
     private boolean dragWindow = false;
     private boolean windowExpanded = true;
 
-    public WidgetWindow(String windowTitle, int windowLength, int windowHeight, int windowStartX, int windowStartY)
+    public WidgetWindow(String windowTitle, int windowWidth, int windowHeight, int windowStartX, int windowStartY)
     {
         this.windowTitle = windowTitle;
         this.initializeFeatures();
-        this.windowLength = windowLength;
+        this.windowWidth = windowWidth;
         this.windowHeight = windowHeight;
         this.dragWindowX = windowStartX;
         this.dragWindowY = windowStartY;
@@ -39,17 +39,17 @@ public abstract class WidgetWindow extends Widget
     {
         mouseDraggedWindow(mouseX, mouseY);
 
-        drawBorderedRect(dragWindowX, 2 + dragWindowY, windowLength + dragWindowX, 14 + dragWindowY, 1, 0xff3c3c3c, 0x804d4d4d);
-        drawBorderedRect(windowLength - 10 + dragWindowX, 4 + dragWindowY, windowLength - 2 + dragWindowX, 12 + dragWindowY, 1, 0xff5e5e5e, 0x805e5e5e);
-        fontRenderer.drawString(windowExpanded ? "x" : "+", windowLength - 8 + dragWindowX, 4 + dragWindowY, 0xffffff);
+        drawBorderedRect(dragWindowX, 2 + dragWindowY, windowWidth + dragWindowX, 14 + dragWindowY, 1, 0xff3c3c3c, 0x804d4d4d);
+        drawBorderedRect(windowWidth - 10 + dragWindowX, 4 + dragWindowY, windowWidth - 2 + dragWindowX, 12 + dragWindowY, 1, 0xff5e5e5e, 0x805e5e5e);
+        fontRenderer.drawString(windowExpanded ? "x" : "+", windowWidth - 8 + dragWindowX, 4 + dragWindowY, 0xffffff);
         fontRenderer.drawString(windowTitle, 4 + dragWindowX, 4 + dragWindowY, 0xffffff);
         if(windowExpanded)
         {
-            drawBorderedRect(dragWindowX, 15 + dragWindowY, windowLength + dragWindowX, windowHeight + dragWindowY, 1, 0xff3c3c3c, 0x804d4d4d);
+            drawBorderedRect(dragWindowX, 15 + dragWindowY, windowWidth + dragWindowX, windowHeight + dragWindowY, 1, 0xff3c3c3c, 0x804d4d4d);
 
             for(WindowFeature feature : windowFeatures)
             {
-                feature.drawScreen(mouseX, mouseY, partialTicks, fontRenderer, dragWindowX, dragWindowY, windowLength, windowHeight);
+                feature.drawScreen(mouseX, mouseY, partialTicks, fontRenderer, dragWindowX, dragWindowY, windowWidth, windowHeight);
             }
         }
     }
@@ -74,11 +74,11 @@ public abstract class WidgetWindow extends Widget
     @Override
     public void mouseClicked(int mouseX, int mouseY, int mouseButton)
     {
-        if(dragWindowX < mouseX && windowLength - 8 + dragWindowX > mouseX && 2 + dragWindowY < mouseY && 14 + dragWindowY > mouseY)
+        if(dragWindowX < mouseX && windowWidth - 8 + dragWindowX > mouseX && 2 + dragWindowY < mouseY && 14 + dragWindowY > mouseY)
         {
             dragWindow = true;
         }
-        if(windowLength - 8 + dragWindowX < mouseX && windowLength + dragWindowX > mouseX && 4 + dragWindowY < mouseY && 12 + dragWindowY > mouseY)
+        if(windowWidth - 8 + dragWindowX < mouseX && windowWidth + dragWindowX > mouseX && 4 + dragWindowY < mouseY && 12 + dragWindowY > mouseY)
         {
             windowExpanded = !windowExpanded;
         }

@@ -28,9 +28,9 @@ public class WindowText extends WindowFeature
     }
 
     @Override
-    public void drawScreen(int mouseX, int mouseY, float partialTicks, FontRenderer fontRenderer, int windowX, int windowY, int windowLength, int windowHeight)
+    public void drawScreen(int mouseX, int mouseY, float partialTicks, FontRenderer fontRenderer, int windowX, int windowY, int windowWidth, int windowHeight)
     {
-        fontRenderer.drawString(text, xPos, yPos, color, dropShadow);
+        fontRenderer.drawString(text, xPos + windowX, yPos + windowY, color, dropShadow);
     }
 
     @Override
