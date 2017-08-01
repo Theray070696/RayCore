@@ -10,7 +10,7 @@ public class WidgetWindowTest extends WidgetWindow
 {
     public WidgetWindowTest()
     {
-        super("Test Window", 80, 128);
+        super("Test Window", 80, 128, 50, 50);
     }
 
     @Override

@@ -19,17 +19,19 @@ public abstract class WidgetWindow extends Widget
     private int windowLength;
     private int windowHeight;
 
-    private int dragWindowX = 100;
-    private int dragWindowY = 0;
+    private int dragWindowX;
+    private int dragWindowY;
     private boolean dragWindow = false;
-    private boolean windowExpanded = false;
+    private boolean windowExpanded = true;
 
-    public WidgetWindow(String windowTitle, int windowLength, int windowHeight)
+    public WidgetWindow(String windowTitle, int windowLength, int windowHeight, int windowStartX, int windowStartY)
     {
         this.windowTitle = windowTitle;
         this.initializeFeatures();
         this.windowLength = windowLength;
         this.windowHeight = windowHeight;
+        this.dragWindowX = windowStartX;
+        this.dragWindowY = windowStartY;
     }
 
     @Override
