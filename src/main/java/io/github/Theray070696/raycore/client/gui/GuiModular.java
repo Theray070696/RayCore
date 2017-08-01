@@ -14,7 +14,7 @@ public abstract class GuiModular extends GuiScreen
 {
     private List<Widget> widgets = new ArrayList<>();
 
-    public GuiModular()
+    public void initGui()
     {
         this.initializeWidgets();
     }
