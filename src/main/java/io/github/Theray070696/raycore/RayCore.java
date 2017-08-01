@@ -1,5 +1,7 @@
 package io.github.Theray070696.raycore;
 
+import io.github.Theray070696.raycore.block.ModBlocks;
+import io.github.Theray070696.raycore.core.GuiHandler;
 import io.github.Theray070696.raycore.lib.ModInfo;
 import io.github.Theray070696.raycore.network.PacketPlaySoundToAll;
 import io.github.Theray070696.raycore.proxy.IProxy;
@@ -31,6 +33,8 @@ public class RayCore
     public void preInit(FMLPreInitializationEvent event)
     {
         LogHelper.info("Pre-Init");
+
+        ModBlocks.loadBlocks();
         
         network = NetworkRegistry.INSTANCE.newSimpleChannel(ModInfo.CHANNEL);
         network.registerMessage(PacketPlaySoundToAll.Handler.class, PacketPlaySoundToAll.class, 0, Side.CLIENT);
@@ -42,6 +46,8 @@ public class RayCore
     public void init(FMLInitializationEvent event)
     {
         LogHelper.info("Init");
+
+        NetworkRegistry.INSTANCE.registerGuiHandler(INSTANCE, new GuiHandler());
         
         LogHelper.info("Init Complete");
     }
