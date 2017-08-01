@@ -42,14 +42,5 @@ public abstract class WindowButton extends WindowFeature
         WidgetWindow.drawBorderedRect(x, y, x1, y1, 1, 0xff5e5e5e, 0xff525252);
     }
 
-    public void drawSmallString(FontRenderer fontRenderer, String string, int x, int y, int color)
-    {
-        GL11.glScalef(0.5F, 0.5F, 0.5F);
-        x *= 2;
-        y *= 2;
-        fontRenderer.drawString(string, x, y, color);
-        GL11.glScalef(2F, 2F, 2F);
-    }
-
     public abstract void onButtonClicked();
 }
