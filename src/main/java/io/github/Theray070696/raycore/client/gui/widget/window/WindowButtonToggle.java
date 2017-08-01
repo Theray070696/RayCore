@@ -9,7 +9,7 @@ import org.lwjgl.opengl.GL11;
  */
 public class WindowButtonToggle extends WindowFeature
 {
-    private boolean toggle = false;
+    protected boolean toggle = false;
 
     private int left;
     private int top;
