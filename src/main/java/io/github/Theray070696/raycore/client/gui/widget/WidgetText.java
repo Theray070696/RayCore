@@ -7,7 +7,7 @@ import net.minecraft.client.gui.FontRenderer;
  */
 public class WidgetText extends Widget
 {
-    private String text;
+    protected String text;
     private int color;
     private boolean dropShadow;
 
