@@ -19,18 +19,6 @@ public abstract class WidgetTextButton extends WidgetText
     }
 
     @Override
-    public void drawScreen(int mouseX, int mouseY, float partialTicks, FontRenderer fontRenderer)
-    {
-        super.drawScreen(mouseX, mouseY, partialTicks, fontRenderer);
-    }
-
-    @Override
-    public void mouseReleased(int mouseX, int mouseY, int state)
-    {
-        super.mouseReleased(mouseX, mouseY, state);
-    }
-
-    @Override
     public void mouseClicked(int mouseX, int mouseY, int mouseButton)
     {
         super.mouseClicked(mouseX, mouseY, mouseButton);
