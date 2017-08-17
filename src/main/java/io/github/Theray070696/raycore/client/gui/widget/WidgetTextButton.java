@@ -1,7 +1,6 @@
 package io.github.Theray070696.raycore.client.gui.widget;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 
 /**
  * Created by Theray070696 on 8/1/2017.

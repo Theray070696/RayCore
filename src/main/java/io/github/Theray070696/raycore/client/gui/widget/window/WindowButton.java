@@ -2,7 +2,6 @@ package io.github.Theray070696.raycore.client.gui.widget.window;
 
 import io.github.Theray070696.raycore.client.gui.widget.WidgetWindow;
 import net.minecraft.client.gui.FontRenderer;
-import org.lwjgl.opengl.GL11;
 
 /**
  * Created by Theray070696 on 8/1/2017.
