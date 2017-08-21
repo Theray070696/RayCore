@@ -18,11 +18,6 @@ public class PacketPlaySoundToAll implements IMessage
     private String soundName;
 
     public PacketPlaySoundToAll() {}
-    
-    public PacketPlaySoundToAll(String modid, String soundName)
-    {
-        this(modid + ":" + soundName);
-    }
 
     public PacketPlaySoundToAll(String soundName)
     {

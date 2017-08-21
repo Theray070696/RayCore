@@ -25,11 +25,6 @@ public class PacketPlayMovingSound implements IMessage
     {
     }
 
-    public PacketPlayMovingSound(String modid, String soundName, String category, int entityID)
-    {
-        this(modid + ":" + soundName, category, entityID);
-    }
-
     public PacketPlayMovingSound(String soundName, String category, int entityID)
     {
         this.soundName = soundName;

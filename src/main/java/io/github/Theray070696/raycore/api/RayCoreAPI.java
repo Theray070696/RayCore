@@ -14,9 +14,19 @@ import net.minecraft.world.World;
  */
 public class RayCoreAPI
 {
+    public static void playSoundToAll(SoundEvent sound)
+    {
+        playSoundToAll(sound.getSoundName());
+    }
+
+    public static void playSoundToAll(ResourceLocation soundLocation)
+    {
+        playSoundToAll(soundLocation.toString());
+    }
+
     public static void playSoundToAll(String modID, String soundName)
     {
-        RayCore.network.sendToAll(new PacketPlaySoundToAll(modID, soundName));
+        playSoundToAll(modID + ":" + soundName);
     }
 
     public static void playSoundToAll(String soundName)
