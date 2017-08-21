@@ -4,6 +4,7 @@ import io.github.Theray070696.raycore.block.ModBlocks;
 import io.github.Theray070696.raycore.configuration.ConfigHandler;
 import io.github.Theray070696.raycore.core.GuiHandler;
 import io.github.Theray070696.raycore.lib.ModInfo;
+import io.github.Theray070696.raycore.network.PacketPlayMovingSound;
 import io.github.Theray070696.raycore.network.PacketPlaySoundToAll;
 import io.github.Theray070696.raycore.proxy.IProxy;
 import io.github.Theray070696.raycore.util.LogHelper;
@@ -44,7 +45,8 @@ public class RayCore
         
         network = NetworkRegistry.INSTANCE.newSimpleChannel(ModInfo.CHANNEL);
         network.registerMessage(PacketPlaySoundToAll.Handler.class, PacketPlaySoundToAll.class, 0, Side.CLIENT);
-        
+        network.registerMessage(PacketPlayMovingSound.Handler.class, PacketPlayMovingSound.class, 0, Side.CLIENT);
+
         LogHelper.info("Pre-Init Complete");
     }
     
