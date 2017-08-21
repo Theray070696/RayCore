@@ -45,7 +45,7 @@ public class RayCore
         
         network = NetworkRegistry.INSTANCE.newSimpleChannel(ModInfo.CHANNEL);
         network.registerMessage(PacketPlaySoundToAll.Handler.class, PacketPlaySoundToAll.class, 0, Side.CLIENT);
-        network.registerMessage(PacketPlayMovingSound.Handler.class, PacketPlayMovingSound.class, 0, Side.CLIENT);
+        network.registerMessage(PacketPlayMovingSound.Handler.class, PacketPlayMovingSound.class, 1, Side.CLIENT);
 
         LogHelper.info("Pre-Init Complete");
     }

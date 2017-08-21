@@ -21,7 +21,7 @@ public class RayCoreAPI
 
     public static void playSoundToAll(ResourceLocation soundLocation)
     {
-        playSoundToAll(soundLocation.toString());
+        playSoundToAll(soundLocation.getResourceDomain(), soundLocation.getResourcePath());
     }
 
     public static void playSoundToAll(String modID, String soundName)
