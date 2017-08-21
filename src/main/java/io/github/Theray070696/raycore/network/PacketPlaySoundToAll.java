@@ -46,16 +46,26 @@ public class PacketPlaySoundToAll implements IMessage
         @Override
         public IMessage onMessage(PacketPlaySoundToAll message, MessageContext ctx)
         {
-            if(RayCore.proxy.getSide().isClient())
+            Minecraft.getMinecraft().addScheduledTask(new Runnable()
             {
-                if(Minecraft.getMinecraft().thePlayer != null)
+                @Override
+                public void run()
                 {
-                    if(SoundEvent.REGISTRY.containsKey(new ResourceLocation(message.soundName)) && SoundEvent.REGISTRY.getObject(new ResourceLocation(message.soundName)) != null)
+                    if(RayCore.proxy.getSide().isClient())
                     {
-                        Minecraft.getMinecraft().thePlayer.playSound(SoundEvent.REGISTRY.getObject(new ResourceLocation(message.soundName)), 1.0f, 1.0f);
+                        if(Minecraft.getMinecraft().thePlayer != null)
+                        {
+                            if(SoundEvent.REGISTRY.containsKey(new ResourceLocation(message.soundName)) && SoundEvent.REGISTRY.getObject(new
+                                    ResourceLocation(message.soundName)) != null)
+
+                            {
+                                Minecraft.getMinecraft().thePlayer.playSound(SoundEvent.REGISTRY.getObject(new ResourceLocation(message.soundName)),
+                                        1.0f, 1.0f);
+                            }
+                        }
                     }
                 }
-            }
+            });
 
             return null;
         }

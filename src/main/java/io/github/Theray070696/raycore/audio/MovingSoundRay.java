@@ -1,4 +1,4 @@
-package io.github.Theray070696.mariodeath.audio;
+package io.github.Theray070696.raycore.audio;
 
 import net.minecraft.client.audio.MovingSound;
 import net.minecraft.entity.Entity;
