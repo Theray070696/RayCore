@@ -1,8 +1,8 @@
 package io.github.Theray070696.raycore.client.gui.widget;
 
+import io.github.Theray070696.raycore.client.gui.util.GuiUtils;
 import io.github.Theray070696.raycore.client.gui.widget.window.WindowFeature;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.Gui;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,13 +37,13 @@ public abstract class WidgetWindow extends Widget
     {
         mouseDraggedWindow(mouseX, mouseY);
 
-        drawBorderedRect(xPos, 2 + yPos, windowWidth + xPos, 14 + yPos, 1, 0xff3c3c3c, 0x804d4d4d);
-        drawBorderedRect(windowWidth - 10 + xPos, 4 + yPos, windowWidth - 2 + xPos, 12 + yPos, 1, 0xff5e5e5e, 0x805e5e5e);
+        GuiUtils.drawBorderedRect(xPos, 2 + yPos, windowWidth + xPos, 14 + yPos, 1, 0xff3c3c3c, 0x804d4d4d);
+        GuiUtils.drawBorderedRect(windowWidth - 10 + xPos, 4 + yPos, windowWidth - 2 + xPos, 12 + yPos, 1, 0xff5e5e5e, 0x805e5e5e);
         fontRenderer.drawString(windowExpanded ? "x" : "+", windowWidth - 8 + xPos, 4 + yPos, 0xffffff);
         fontRenderer.drawString(windowTitle, 4 + xPos, 4 + yPos, 0xffffff);
         if(windowExpanded)
         {
-            drawBorderedRect(xPos, 15 + yPos, windowWidth + xPos, windowHeight + yPos, 1, 0xff3c3c3c, 0x804d4d4d);
+            GuiUtils.drawBorderedRect(xPos, 15 + yPos, windowWidth + xPos, windowHeight + yPos, 1, 0xff3c3c3c, 0x804d4d4d);
 
             for(WindowFeature feature : windowFeatures)
             {
@@ -85,15 +85,6 @@ public abstract class WidgetWindow extends Widget
         {
             feature.mouseClicked(mouseX, mouseY, mouseButton, xPos, yPos);
         }
-    }
-
-    public static void drawBorderedRect(int left, int top, int right, int bottom, int borderSize, int borderColor, int insideColor)
-    {
-        Gui.drawRect(left + borderSize, top + borderSize, right - borderSize, bottom - borderSize, insideColor);
-        Gui.drawRect(left + borderSize, top + borderSize, right, top, borderColor);
-        Gui.drawRect(left, top, left + borderSize, bottom, borderColor);
-        Gui.drawRect(right, bottom, right - borderSize, top + borderSize, borderColor);
-        Gui.drawRect(left, bottom - borderSize, right, bottom, borderColor);
     }
 
     public abstract void initializeFeatures();

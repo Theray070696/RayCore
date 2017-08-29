@@ -1,6 +1,6 @@
 package io.github.Theray070696.raycore.client.gui.widget.window;
 
-import io.github.Theray070696.raycore.client.gui.widget.WidgetWindow;
+import io.github.Theray070696.raycore.client.gui.util.GuiUtils;
 import net.minecraft.client.gui.FontRenderer;
 
 /**
@@ -38,7 +38,7 @@ public abstract class WindowButton extends WindowFeature
 
     public void button(int x, int y, int x1, int y1)
     {
-        WidgetWindow.drawBorderedRect(x, y, x1, y1, 1, 0xff5e5e5e, 0xff525252);
+        GuiUtils.drawBorderedRect(x, y, x1, y1, 1, 0xff5e5e5e, 0xff525252);
     }
 
     public abstract void onButtonClicked();

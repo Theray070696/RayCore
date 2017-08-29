@@ -13,7 +13,6 @@ Thumbs.db
 #gradle stuff
 /.gradle
 /build/
-/libs/
 /run*/
 /ui/
 *.launch
@@ -43,3 +42,5 @@ options.txt
 /design
 #photoshop
 /*.psd
+#jar files
+/*.jar

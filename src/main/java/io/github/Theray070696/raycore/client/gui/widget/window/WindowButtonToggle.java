@@ -1,5 +1,6 @@
 package io.github.Theray070696.raycore.client.gui.widget.window;
 
+import io.github.Theray070696.raycore.client.gui.util.GuiUtils;
 import net.minecraft.client.gui.FontRenderer;
 
 /**
@@ -19,7 +20,7 @@ public class WindowButtonToggle extends WindowButton
     {
         super.drawScreen(mouseX, mouseY, partialTicks, fontRenderer, windowX, windowY, windowWidth, windowHeight);
 
-        drawSmallString(fontRenderer, toggle ? "Enabled" : "Disabled", left + 3 + windowX, (bottom - 6) + windowY, 0xffffff);
+        GuiUtils.drawSmallString(left + 3 + windowX, (bottom - 6) + windowY, toggle ? "Enabled" : "Disabled", 0xffffff);
     }
 
     @Override
