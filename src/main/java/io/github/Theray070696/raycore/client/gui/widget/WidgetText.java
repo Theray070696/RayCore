@@ -26,6 +26,11 @@ public class WidgetText extends Widget
     }
 
     @Override
+    public void keyTyped(char c, int keyCode)
+    {
+    }
+
+    @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks, FontRenderer fontRenderer)
     {
         fontRenderer.drawString(text, xPos, yPos, color, dropShadow);

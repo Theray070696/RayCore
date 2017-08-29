@@ -19,9 +19,14 @@ public abstract class GuiModular extends GuiScreen
         this.initializeWidgets();
     }
 
-    protected void keyTyped(char c, int i)
+    protected void keyTyped(char c, int keyCode)
     {
-        if(i == 1)
+        for(Widget widget : widgets)
+        {
+            widget.keyTyped(c, keyCode);
+        }
+
+        if(keyCode == 1)
         {
             mc.displayGuiScreen(null);
         }

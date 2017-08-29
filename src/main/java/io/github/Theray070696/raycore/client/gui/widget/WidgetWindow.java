@@ -16,8 +16,8 @@ public abstract class WidgetWindow extends Widget
 
     private String windowTitle;
 
-    private int windowWidth;
-    private int windowHeight;
+    public int windowWidth;
+    public int windowHeight;
 
     private boolean dragWindow = false;
     private boolean windowExpanded = true;
@@ -30,6 +30,18 @@ public abstract class WidgetWindow extends Widget
         this.windowHeight = windowHeight;
         this.xPos = windowStartX;
         this.yPos = windowStartY;
+    }
+
+    @Override
+    public void keyTyped(char c, int keyCode)
+    {
+        if(windowExpanded && !dragWindow)
+        {
+            for(WindowFeature feature : windowFeatures)
+            {
+                feature.keyTyped(c, keyCode);
+            }
+        }
     }
 
     @Override

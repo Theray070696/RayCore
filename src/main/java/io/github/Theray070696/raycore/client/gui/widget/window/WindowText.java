@@ -28,6 +28,11 @@ public class WindowText extends WindowFeature
     }
 
     @Override
+    public void keyTyped(char c, int keyCode)
+    {
+    }
+
+    @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks, FontRenderer fontRenderer, int windowX, int windowY, int windowWidth, int windowHeight)
     {
         fontRenderer.drawString(text, xPos + windowX, yPos + windowY, color, dropShadow);
