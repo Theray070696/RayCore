@@ -10,7 +10,7 @@ public abstract class Widget
     protected int xPos;
     protected int yPos;
 
-    public abstract void keyTyped(char c, int keyCode);
+    public abstract void keyTyped(char typedChar, int keyCode);
 
     public abstract void drawScreen(int mouseX, int mouseY, float partialTicks, FontRenderer fontRenderer);
 

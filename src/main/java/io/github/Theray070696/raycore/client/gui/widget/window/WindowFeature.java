@@ -7,7 +7,7 @@ import net.minecraft.client.gui.FontRenderer;
  */
 public abstract class WindowFeature
 {
-    public abstract void keyTyped(char c, int keyCode);
+    public abstract void keyTyped(char typedChar, int keyCode);
 
     public abstract void drawScreen(int mouseX, int mouseY, float partialTicks, FontRenderer fontRenderer, int windowX, int windowY, int windowWidth, int windowHeight);
 

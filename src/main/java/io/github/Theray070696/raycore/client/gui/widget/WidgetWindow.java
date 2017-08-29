@@ -33,13 +33,13 @@ public abstract class WidgetWindow extends Widget
     }
 
     @Override
-    public void keyTyped(char c, int keyCode)
+    public void keyTyped(char typedChar, int keyCode)
     {
         if(windowExpanded && !dragWindow)
         {
             for(WindowFeature feature : windowFeatures)
             {
-                feature.keyTyped(c, keyCode);
+                feature.keyTyped(typedChar, keyCode);
             }
         }
     }

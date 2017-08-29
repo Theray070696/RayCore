@@ -28,7 +28,7 @@ public class WindowText extends WindowFeature
     }
 
     @Override
-    public void keyTyped(char c, int keyCode)
+    public void keyTyped(char typedChar, int keyCode)
     {
     }
 
