@@ -55,7 +55,7 @@ public class BlockRay extends Block implements ItemModelProvider
     public Block setUnlocalizedName(String name)
     {
         super.setUnlocalizedName(name);
-        this.setRegistryName(modID + ":" + name);
+        this.setRegistryName(this.modID + ":" + name);
         return this;
     }
 
