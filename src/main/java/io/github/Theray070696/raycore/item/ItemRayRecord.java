@@ -30,7 +30,7 @@ public class ItemRayRecord extends ItemRecord implements ItemModelProvider
     public Item setUnlocalizedName(String name)
     {
         super.setUnlocalizedName(name);
-        this.setRegistryName(modID + ":" + name);
+        this.setRegistryName(modID + ":" + name.toLowerCase());
         return this;
     }
 

@@ -61,7 +61,7 @@ public abstract class BlockRayContainer extends BlockContainer implements ItemMo
     public Block setUnlocalizedName(String name)
     {
         super.setUnlocalizedName(name);
-        this.setRegistryName(modID + ":" + name);
+        this.setRegistryName(modID + ":" + name.toLowerCase());
         return this;
     }
     

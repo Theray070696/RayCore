@@ -31,7 +31,7 @@ public class ItemRay extends Item implements ItemModelProvider
     public Item setUnlocalizedName(String name)
     {
         super.setUnlocalizedName(name);
-        this.setRegistryName(modID + ":" + name);
+        this.setRegistryName(modID + ":" + name.toLowerCase());
         return this;
     }
 
