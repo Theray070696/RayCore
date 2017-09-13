@@ -62,4 +62,9 @@ public class ItemRay extends Item implements ItemModelProvider
     {
         RayCore.proxy.registerItemRenderer(this, 0, modID, getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
     }
+
+    public int getMaxMetadata()
+    {
+        return 0;
+    }
 }
