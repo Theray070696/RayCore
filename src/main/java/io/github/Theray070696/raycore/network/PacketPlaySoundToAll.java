@@ -17,7 +17,9 @@ public class PacketPlaySoundToAll implements IMessage
 {
     private String soundName;
 
-    public PacketPlaySoundToAll() {}
+    public PacketPlaySoundToAll()
+    {
+    }
 
     public PacketPlaySoundToAll(String soundName)
     {
@@ -48,13 +50,13 @@ public class PacketPlaySoundToAll implements IMessage
                 {
                     if(RayCore.proxy.getSide().isClient())
                     {
-                        if(Minecraft.getMinecraft().thePlayer != null)
+                        if(Minecraft.getMinecraft().player != null)
                         {
                             if(SoundEvent.REGISTRY.containsKey(new ResourceLocation(message.soundName)) && SoundEvent.REGISTRY.getObject(new
                                     ResourceLocation(message.soundName)) != null)
 
                             {
-                                Minecraft.getMinecraft().thePlayer.playSound(SoundEvent.REGISTRY.getObject(new ResourceLocation(message.soundName)),
+                                Minecraft.getMinecraft().player.playSound(SoundEvent.REGISTRY.getObject(new ResourceLocation(message.soundName)),
                                         1.0f, 1.0f);
                             }
                         }

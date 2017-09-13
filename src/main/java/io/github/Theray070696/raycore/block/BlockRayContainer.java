@@ -12,7 +12,6 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.math.BlockPos;
@@ -99,7 +98,7 @@ public abstract class BlockRayContainer extends BlockContainer implements ItemMo
         {
             ItemStack itemStack = inventory.getStackInSlot(i);
             
-            if(itemStack != null && itemStack.stackSize > 0)
+            if(itemStack != null && itemStack.getCount() > 0)
             {
                 Random rand = new Random();
                 
@@ -111,15 +110,15 @@ public abstract class BlockRayContainer extends BlockContainer implements ItemMo
                 
                 if(itemStack.hasTagCompound())
                 {
-                    entityItem.getEntityItem().setTagCompound((NBTTagCompound) itemStack.getTagCompound().copy());
+                    entityItem.getItem().setTagCompound(itemStack.getTagCompound().copy());
                 }
                 
                 float factor = 0.05F;
                 entityItem.motionX = rand.nextGaussian() * factor;
                 entityItem.motionY = rand.nextGaussian() * factor + 0.2F;
                 entityItem.motionZ = rand.nextGaussian() * factor;
-                world.spawnEntityInWorld(entityItem);
-                itemStack.stackSize = 0;
+                world.spawnEntity(entityItem);
+                itemStack.setCount(0);
             }
         }
     }
@@ -127,6 +126,6 @@ public abstract class BlockRayContainer extends BlockContainer implements ItemMo
     @Override
     public void registerItemModel(Item itemBlock)
     {
-        RayCore.proxy.registerItemRenderer(itemBlock, 0, modID, getRegistryName().getResourcePath());//getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+        RayCore.proxy.registerItemRenderer(itemBlock, 0, modID, getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
     }
 }
