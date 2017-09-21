@@ -91,7 +91,7 @@ public class BlockRay extends Block implements ItemModelProvider
         {
             ItemStack itemStack = inventory.getStackInSlot(i);
 
-            if(itemStack != null && itemStack.getCount() > 0)
+            if(itemStack != ItemStack.EMPTY && itemStack.getCount() > 0)
             {
                 Random rand = new Random();
 
