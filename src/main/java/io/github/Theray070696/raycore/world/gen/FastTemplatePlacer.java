@@ -169,9 +169,10 @@ public class FastTemplatePlacer
                         // CHANGE START
                         boolean flag;
 
-                        if(((transformedPos.getX() % 16 == 0 || transformedPos.getX() % 16 == 15 || transformedPos.getZ() % 16 == 0 ||
-                                transformedPos.getZ() % 16 == 15) && transformedPos.getY() == pos.getY() + this.size.getY() - 1) ||
-                                blockState1.getBlock().getLightValue(blockState1) > 0) // We are at a chunk boundary and at the ceiling or the
+                        if(!blockState1.getBlock().equals(Blocks.AIR) && (transformedPos.getX() == pos.getX() || transformedPos.getX() == pos.getX
+                                () + this.size.getX() - 1 || transformedPos.getY() == pos.getY() || transformedPos.getY() == pos.getY() + this.size
+                                .getY() - 1 || transformedPos.getZ() == pos.getZ() || transformedPos.getZ() == pos.getZ() + this.size.getZ() - 1)
+                                || blockState1.getBlock().getLightValue(blockState1) > 0) // We are at a chunk boundary and at the ceiling or the
                         // block emits light
                         {
                             flag = BlockPlacementHelper.setBlockStateFast(world, transformedPos, blockState1, flags, true);
