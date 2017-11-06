@@ -22,7 +22,14 @@ public abstract class WidgetWindow extends Widget
     private boolean dragWindow = false;
     private boolean windowExpanded = true;
 
+    protected boolean draggable;
+
     public WidgetWindow(String windowTitle, int windowWidth, int windowHeight, int windowStartX, int windowStartY)
+    {
+        this(windowTitle, windowWidth, windowHeight, windowStartX, windowStartY, true);
+    }
+
+    public WidgetWindow(String windowTitle, int windowWidth, int windowHeight, int windowStartX, int windowStartY, boolean draggable)
     {
         this.windowTitle = windowTitle;
         this.initializeFeatures();
@@ -30,6 +37,7 @@ public abstract class WidgetWindow extends Widget
         this.windowHeight = windowHeight;
         this.xPos = windowStartX;
         this.yPos = windowStartY;
+        this.draggable = draggable;
     }
 
     @Override
