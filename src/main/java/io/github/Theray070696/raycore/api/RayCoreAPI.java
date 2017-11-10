@@ -14,16 +14,6 @@ import net.minecraft.world.World;
  */
 public class RayCoreAPI
 {
-    public static void playSoundToAll(SoundEvent sound)
-    {
-        playSoundToAll(sound.getSoundName());
-    }
-
-    public static void playSoundToAll(ResourceLocation soundLocation)
-    {
-        playSoundToAll(soundLocation.getResourceDomain(), soundLocation.getResourcePath());
-    }
-
     public static void playSoundToAll(String modID, String soundName)
     {
         playSoundToAll(modID + ":" + soundName);
@@ -34,19 +24,9 @@ public class RayCoreAPI
         RayCore.network.sendToAll(new PacketPlaySoundToAll(soundName));
     }
 
-    public static void playMovingSound(SoundEvent sound, SoundCategory category, World world, Entity entity)
+    public static void playMovingSound(String modID, String soundName, SoundCategory category, World world, Entity entity)
     {
-        playMovingSound(sound, category.getName(), world, entity);
-    }
-
-    public static void playMovingSound(SoundEvent sound, String category, World world, Entity entity)
-    {
-        playMovingSound(sound.getSoundName(), category, world, entity);
-    }
-
-    public static void playMovingSound(ResourceLocation soundLocation, String category, World world, Entity entity)
-    {
-        playMovingSound(soundLocation.getResourceDomain(), soundLocation.getResourcePath(), category, world, entity);
+        playMovingSound(modID, soundName, category.getName(), world, entity.getEntityId());
     }
 
     public static void playMovingSound(String modID, String soundName, String category, World world, Entity entity)
