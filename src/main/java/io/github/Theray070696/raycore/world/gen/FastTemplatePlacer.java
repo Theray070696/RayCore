@@ -208,7 +208,7 @@ public class FastTemplatePlacer
 
                     if(structureBoundingBox == null || structureBoundingBox.isVecInside(blockPos1))
                     {
-                        world.notifyNeighborsRespectDebug(blockPos1, blockInfo.blockState.getBlock());
+                        world.notifyNeighborsRespectDebug(blockPos1, blockInfo.blockState.getBlock(), false);
 
                         if(blockInfo.tileentityData != null)
                         {
@@ -262,7 +262,7 @@ public class FastTemplatePlacer
                     float yaw = entity.getMirroredYaw(mirror);
                     yaw = yaw + (entity.rotationYaw - entity.getRotatedYaw(rotation));
                     entity.setLocationAndAngles(vec3D1.xCoord, vec3D1.yCoord, vec3D1.zCoord, yaw, entity.rotationPitch);
-                    world.spawnEntityInWorld(entity);
+                    world.spawnEntity(entity);
                 }
             }
         }

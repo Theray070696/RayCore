@@ -14,7 +14,7 @@ public class GuiUtils
         GL11.glScalef(0.5F, 0.5F, 0.5F);
         x *= 2;
         y *= 2;
-        Minecraft.getMinecraft().fontRendererObj.drawString(string, x, y, color);
+        Minecraft.getMinecraft().fontRenderer.drawString(string, x, y, color);
         GL11.glScalef(2F, 2F, 2F);
     }
 
@@ -23,7 +23,7 @@ public class GuiUtils
         GL11.glScalef(0.5F, 0.5F, 0.5F);
         x *= 2;
         y *= 2;
-        Minecraft.getMinecraft().fontRendererObj.drawSplitString(text, x, y, splitLength, color);
+        Minecraft.getMinecraft().fontRenderer.drawSplitString(text, x, y, splitLength, color);
         GL11.glScalef(2F, 2F, 2F);
     }
 

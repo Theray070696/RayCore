@@ -99,7 +99,7 @@ public abstract class BlockRayContainer extends BlockContainer implements ItemMo
         {
             ItemStack itemStack = inventory.getStackInSlot(i);
             
-            if(itemStack != null && itemStack.stackSize > 0)
+            if(itemStack != ItemStack.EMPTY && itemStack.getCount() > 0)
             {
                 Random rand = new Random();
                 
@@ -118,8 +118,8 @@ public abstract class BlockRayContainer extends BlockContainer implements ItemMo
                 entityItem.motionX = rand.nextGaussian() * factor;
                 entityItem.motionY = rand.nextGaussian() * factor + 0.2F;
                 entityItem.motionZ = rand.nextGaussian() * factor;
-                world.spawnEntityInWorld(entityItem);
-                itemStack.stackSize = 0;
+                world.spawnEntity(entityItem);
+                itemStack.setCount(0);
             }
         }
     }

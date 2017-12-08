@@ -92,7 +92,7 @@ public class BlockRay extends Block implements ItemModelProvider
         {
             ItemStack itemStack = inventory.getStackInSlot(i);
 
-            if(itemStack != null && itemStack.stackSize > 0)
+            if(itemStack != ItemStack.EMPTY && itemStack.getCount() > 0)
             {
                 Random rand = new Random();
 
@@ -104,15 +104,15 @@ public class BlockRay extends Block implements ItemModelProvider
 
                 if(itemStack.hasTagCompound())
                 {
-                    entityItem.getEntityItem().setTagCompound((NBTTagCompound) itemStack.getTagCompound().copy());
+                    entityItem.getEntityItem().setTagCompound(itemStack.getTagCompound().copy());
                 }
 
                 float factor = 0.05F;
                 entityItem.motionX = rand.nextGaussian() * factor;
                 entityItem.motionY = rand.nextGaussian() * factor + 0.2F;
                 entityItem.motionZ = rand.nextGaussian() * factor;
-                world.spawnEntityInWorld(entityItem);
-                itemStack.stackSize = 0;
+                world.spawnEntity(entityItem);
+                itemStack.setCount(0);
             }
         }
     }
