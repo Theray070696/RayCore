@@ -11,6 +11,7 @@ import net.minecraft.util.SoundEvent;
 public class MovingSoundRay extends MovingSound
 {
     private final Entity entity;
+    //private float distance; // Don't think this is needed, so I'm disabling it.
 
     public MovingSoundRay(Entity entity, SoundEvent sound, SoundCategory category)
     {
@@ -19,6 +20,7 @@ public class MovingSoundRay extends MovingSound
         this.entity = entity;
     }
 
+    // Minecart sound code.
     public void update()
     {
         if(this.entity.isDead)

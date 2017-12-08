@@ -36,7 +36,7 @@ public abstract class GuiModular extends GuiScreen
     {
         for(Widget widget : widgets)
         {
-            widget.drawScreen(mouseX, mouseY, partialTicks, fontRenderer);
+            widget.drawScreen(mouseX, mouseY, partialTicks, fontRendererObj);
         }
     }
 

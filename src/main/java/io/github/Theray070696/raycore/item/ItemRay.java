@@ -31,7 +31,7 @@ public class ItemRay extends Item implements ItemModelProvider
     public Item setUnlocalizedName(String name)
     {
         super.setUnlocalizedName(name);
-        this.setRegistryName(modID + ":" + name.toLowerCase());
+        this.setRegistryName(modID + ":" + name);
         return this;
     }
 
@@ -61,10 +61,5 @@ public class ItemRay extends Item implements ItemModelProvider
     public void registerItemModel(Item item)
     {
         RayCore.proxy.registerItemRenderer(this, 0, modID, getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
-    }
-
-    public int getMaxMetadata()
-    {
-        return 0;
     }
 }

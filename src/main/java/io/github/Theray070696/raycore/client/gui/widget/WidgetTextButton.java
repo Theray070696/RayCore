@@ -22,7 +22,7 @@ public abstract class WidgetTextButton extends WidgetText
     {
         super.mouseClicked(mouseX, mouseY, mouseButton);
 
-        int stringWidth = Minecraft.getMinecraft().fontRenderer.getStringWidth(this.text);
+        int stringWidth = Minecraft.getMinecraft().fontRendererObj.getStringWidth(this.text);
 
         if(xPos - 2 < mouseX && stringWidth + 2 + xPos > mouseX && yPos - 2 < mouseY && yPos + 10 > mouseY)
         {

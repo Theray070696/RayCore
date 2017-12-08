@@ -63,7 +63,7 @@ public class PacketPlayMovingSound implements IMessage
                         if(SoundEvent.REGISTRY.containsKey(new ResourceLocation(message.soundName)) && SoundEvent.REGISTRY.getObject(new
                                 ResourceLocation(message.soundName)) != null)
                         {
-                            Minecraft.getMinecraft().getSoundHandler().playSound(new MovingSoundRay(Minecraft.getMinecraft().player.world
+                            Minecraft.getMinecraft().getSoundHandler().playSound(new MovingSoundRay(Minecraft.getMinecraft().thePlayer.worldObj
                                     .getEntityByID(message.entityID), SoundEvent.REGISTRY.getObject(new ResourceLocation(message.soundName)),
                                     SoundCategory.getByName(message.category)));
                         }

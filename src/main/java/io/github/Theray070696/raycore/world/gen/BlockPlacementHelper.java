@@ -37,7 +37,7 @@ public class BlockPlacementHelper
         if(pos.getY() < 0 || pos.getY() >= 256)
         {
             return false;
-        } else if(!world.isRemote && world.getWorldInfo().getTerrainType() == WorldType.DEBUG_ALL_BLOCK_STATES)
+        } else if(!world.isRemote && world.getWorldInfo().getTerrainType() == WorldType.DEBUG_WORLD)
         {
             return false;
         } else
@@ -82,9 +82,9 @@ public class BlockPlacementHelper
             {
                 if(updateLighting && newState.getLightOpacity(world, pos) != oldOpacity || newState.getLightValue(world, pos) != oldLight)
                 {
-                    world.profiler.startSection("checkLight");
+                    world.theProfiler.startSection("checkLight");
                     world.checkLight(pos);
-                    world.profiler.endSection();
+                    world.theProfiler.endSection();
                 }
 
                 if(blockSnapshot == null) // Don't notify clients or update physics while capturing blockstates
@@ -128,8 +128,8 @@ public class BlockPlacementHelper
                     return null;
                 }
 
-                extendedblockstorage = chunk.getBlockStorageArray()[chunkY >> 4] = new ExtendedBlockStorage(chunkY >> 4 << 4, chunk.getWorld()
-                        .provider.hasSkyLight());
+                extendedblockstorage = chunk.getBlockStorageArray()[chunkY >> 4] = new ExtendedBlockStorage(chunkY >> 4 << 4, !chunk.getWorld()
+                        .provider.getHasNoSky());
             }
 
             extendedblockstorage.set(chunkX, chunkY & 15, chunkZ, newState);

@@ -5,6 +5,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemRecord;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 
 /**
@@ -30,8 +31,14 @@ public class ItemRayRecord extends ItemRecord implements ItemModelProvider
     public Item setUnlocalizedName(String name)
     {
         super.setUnlocalizedName(name);
-        this.setRegistryName(modID + ":" + name.toLowerCase());
+        this.setRegistryName(modID + ":" + name);
         return this;
+    }
+
+    @Override
+    public ResourceLocation getRecordResource(String name)
+    {
+        return new ResourceLocation(this.modID, name);
     }
 
     @Override

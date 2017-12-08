@@ -47,9 +47,9 @@ public class FastTemplatePlacer
     }
     // CHANGE END
 
-    public static BlockPos transformedBlockPos(PlacementSettings placementIn, BlockPos pos)
+    public static BlockPos transformedBlockPos(PlacementSettings settings, BlockPos pos)
     {
-        return transformedBlockPos(pos, placementIn.getMirror(), placementIn.getRotation());
+        return transformedBlockPos(pos, settings.getMirror(), settings.getRotation());
     }
 
     private static BlockPos transformedBlockPos(BlockPos pos, Mirror mirror, Rotation rotation)
@@ -86,9 +86,9 @@ public class FastTemplatePlacer
 
     private static Vec3d transformedVec3d(Vec3d vec, Mirror mirror, Rotation rotation)
     {
-        double x = vec.x;
-        double y = vec.y;
-        double z = vec.z;
+        double x = vec.xCoord;
+        double y = vec.yCoord;
+        double z = vec.zCoord;
         boolean flag = true;
 
         switch(mirror)
@@ -208,7 +208,7 @@ public class FastTemplatePlacer
 
                     if(structureBoundingBox == null || structureBoundingBox.isVecInside(blockPos1))
                     {
-                        world.notifyNeighborsRespectDebug(blockPos1, blockInfo.blockState.getBlock(), false);
+                        world.notifyNeighborsRespectDebug(blockPos1, blockInfo.blockState.getBlock());
 
                         if(blockInfo.tileentityData != null)
                         {
@@ -242,9 +242,9 @@ public class FastTemplatePlacer
                 Vec3d vec3D = transformedVec3d(entityInfo.pos, mirror, rotation);
                 Vec3d vec3D1 = vec3D.addVector((double) pos.getX(), (double) pos.getY(), (double) pos.getZ());
                 NBTTagList tagList = new NBTTagList();
-                tagList.appendTag(new NBTTagDouble(vec3D1.x));
-                tagList.appendTag(new NBTTagDouble(vec3D1.y));
-                tagList.appendTag(new NBTTagDouble(vec3D1.z));
+                tagList.appendTag(new NBTTagDouble(vec3D1.xCoord));
+                tagList.appendTag(new NBTTagDouble(vec3D1.yCoord));
+                tagList.appendTag(new NBTTagDouble(vec3D1.zCoord));
                 compound.setTag("Pos", tagList);
                 compound.setUniqueId("UUID", UUID.randomUUID());
                 Entity entity;
@@ -261,8 +261,8 @@ public class FastTemplatePlacer
                 {
                     float yaw = entity.getMirroredYaw(mirror);
                     yaw = yaw + (entity.rotationYaw - entity.getRotatedYaw(rotation));
-                    entity.setLocationAndAngles(vec3D1.x, vec3D1.y, vec3D1.z, yaw, entity.rotationPitch);
-                    world.spawnEntity(entity);
+                    entity.setLocationAndAngles(vec3D1.xCoord, vec3D1.yCoord, vec3D1.zCoord, yaw, entity.rotationPitch);
+                    world.spawnEntityInWorld(entity);
                 }
             }
         }
