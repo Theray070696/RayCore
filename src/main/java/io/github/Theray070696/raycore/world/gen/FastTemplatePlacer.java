@@ -35,15 +35,17 @@ import java.util.UUID;
  */
 public class FastTemplatePlacer
 {
+    private final List<Template.EntityInfo> entities = Lists.newArrayList();
+
     // CHANGE START
     public final List<Template.BlockInfo> blocks = Lists.newArrayList();
-    private final List<Template.EntityInfo> entities = Lists.newArrayList();
     private final Template template;
     private BlockPos size = BlockPos.ORIGIN;
 
     public FastTemplatePlacer(Template template)
     {
         this.template = template;
+        this.read(template.writeToNBT(new NBTTagCompound()));
     }
     // CHANGE END
 
