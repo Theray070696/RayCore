@@ -35,9 +35,9 @@ import java.util.UUID;
  */
 public class FastTemplatePlacer
 {
+    // CHANGE START
     public final List<Template.BlockInfo> blocks = Lists.newArrayList();
     private final List<Template.EntityInfo> entities = Lists.newArrayList();
-    // CHANGE START
     private final Template template;
     private BlockPos size = BlockPos.ORIGIN;
 
