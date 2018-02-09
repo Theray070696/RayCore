@@ -129,7 +129,7 @@ public class BlockPlacementHelper
                 }
 
                 extendedblockstorage = chunk.getBlockStorageArray()[chunkY >> 4] = new ExtendedBlockStorage(chunkY >> 4 << 4, !chunk.getWorld()
-                        .provider.getHasNoSky());
+                        .provider.hasNoSky());
             }
 
             extendedblockstorage.set(chunkX, chunkY & 15, chunkZ, newState);

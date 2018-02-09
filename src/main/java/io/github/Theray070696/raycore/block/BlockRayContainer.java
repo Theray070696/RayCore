@@ -111,14 +111,14 @@ public abstract class BlockRayContainer extends BlockContainer implements ItemMo
                 
                 if(itemStack.hasTagCompound())
                 {
-                    entityItem.getEntityItem().setTagCompound((NBTTagCompound) itemStack.getTagCompound().copy());
+                    entityItem.getEntityItem().setTagCompound(itemStack.getTagCompound().copy());
                 }
                 
                 float factor = 0.05F;
                 entityItem.motionX = rand.nextGaussian() * factor;
                 entityItem.motionY = rand.nextGaussian() * factor + 0.2F;
                 entityItem.motionZ = rand.nextGaussian() * factor;
-                world.spawnEntityInWorld(entityItem);
+                world.spawnEntity(entityItem);
                 itemStack.stackSize = 0;
             }
         }

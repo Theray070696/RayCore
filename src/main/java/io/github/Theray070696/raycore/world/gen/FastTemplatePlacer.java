@@ -264,7 +264,7 @@ public class FastTemplatePlacer
                     float yaw = entity.getMirroredYaw(mirror);
                     yaw = yaw + (entity.rotationYaw - entity.getRotatedYaw(rotation));
                     entity.setLocationAndAngles(vec3D1.xCoord, vec3D1.yCoord, vec3D1.zCoord, yaw, entity.rotationPitch);
-                    world.spawnEntityInWorld(entity);
+                    world.spawnEntity(entity);
                 }
             }
         }
