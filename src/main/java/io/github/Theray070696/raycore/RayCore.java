@@ -1,13 +1,10 @@
 package io.github.Theray070696.raycore;
 
-import io.github.Theray070696.raycore.block.ModBlocks;
 import io.github.Theray070696.raycore.configuration.ConfigHandler;
-import io.github.Theray070696.raycore.core.GuiHandler;
 import io.github.Theray070696.raycore.lib.ModInfo;
 import io.github.Theray070696.raycore.network.PacketPlayMovingSound;
 import io.github.Theray070696.raycore.network.PacketPlaySoundToAll;
 import io.github.Theray070696.raycore.proxy.IProxy;
-import io.github.Theray070696.raycore.util.LogHelper;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -16,6 +13,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Created by Theray070696 on 1/22/2017.
@@ -30,44 +28,37 @@ public class RayCore
     public static IProxy proxy;
     
     public static SimpleNetworkWrapper network;
+    public Logger logger;
     
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
-        LogHelper.info("Pre-Init");
+        event.getModLog().info("Pre-Init");
 
         ConfigHandler.loadConfig(event);
 
-        if(ConfigHandler.developerModeEnabled)
-        {
-            ModBlocks.loadBlocks();
-        }
+        this.logger = event.getModLog();
         
         network = NetworkRegistry.INSTANCE.newSimpleChannel(ModInfo.CHANNEL);
         network.registerMessage(PacketPlaySoundToAll.Handler.class, PacketPlaySoundToAll.class, 0, Side.CLIENT);
         network.registerMessage(PacketPlayMovingSound.Handler.class, PacketPlayMovingSound.class, 1, Side.CLIENT);
 
-        LogHelper.info("Pre-Init Complete");
+        this.logger.info("Pre-Init Complete");
     }
     
     @Mod.EventHandler
     public void init(FMLInitializationEvent event)
     {
-        LogHelper.info("Init");
+        this.logger.info("Init");
 
-        if(ConfigHandler.developerModeEnabled)
-        {
-            NetworkRegistry.INSTANCE.registerGuiHandler(INSTANCE, new GuiHandler());
-        }
-        
-        LogHelper.info("Init Complete");
+        this.logger.info("Init Complete");
     }
     
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
-        LogHelper.info("Post-Init");
-        
-        LogHelper.info("Post-Init Complete");
+        this.logger.info("Post-Init");
+
+        this.logger.info("Post-Init Complete");
     }
 }
