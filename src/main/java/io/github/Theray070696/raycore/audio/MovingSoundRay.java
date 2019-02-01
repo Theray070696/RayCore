@@ -21,14 +21,17 @@ public class MovingSoundRay extends MovingSound
 
     public void update()
     {
-        if(this.entity.isDead)
+        if(this.entity != null)
         {
-            this.donePlaying = true;
-        } else
-        {
-            this.xPosF = (float) this.entity.posX;
-            this.yPosF = (float) this.entity.posY;
-            this.zPosF = (float) this.entity.posZ;
+            if(this.entity.isDead)
+            {
+                this.donePlaying = true;
+            } else
+            {
+                this.xPosF = (float) this.entity.posX;
+                this.yPosF = (float) this.entity.posY;
+                this.zPosF = (float) this.entity.posZ;
+            }
         }
     }
 }
