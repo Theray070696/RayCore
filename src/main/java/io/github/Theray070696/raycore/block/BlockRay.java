@@ -51,17 +51,17 @@ public class BlockRay extends Block implements ItemModelProvider
     }
 
     @Override
-    public Block setUnlocalizedName(String name)
+    public Block setTranslationKey(String name)
     {
-        super.setUnlocalizedName(name);
+        super.setTranslationKey(name);
         this.setRegistryName(this.modID + ":" + name.toLowerCase());
         return this;
     }
 
     @Override
-    public String getUnlocalizedName()
+    public String getTranslationKey()
     {
-        return String.format("tile.%s%s", this.modID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+        return String.format("tile.%s%s", this.modID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getTranslationKey()));
     }
 
     protected String getUnwrappedUnlocalizedName(String unlocalizedName)
@@ -95,9 +95,9 @@ public class BlockRay extends Block implements ItemModelProvider
             {
                 Random rand = new Random();
 
-                float dX = rand.nextFloat() * 0.8F + 0.1F;
-                float dY = rand.nextFloat() * 0.8F + 0.1F;
-                float dZ = rand.nextFloat() * 0.8F + 0.1F;
+                float dX = rand.nextFloat() * 0.8f + 0.1f;
+                float dY = rand.nextFloat() * 0.8f + 0.1f;
+                float dZ = rand.nextFloat() * 0.8f + 0.1f;
 
                 EntityItem entityItem = new EntityItem(world, pos.getX() + dX, pos.getY() + dY, pos.getZ() + dZ, itemStack.copy());
 
@@ -106,9 +106,9 @@ public class BlockRay extends Block implements ItemModelProvider
                     entityItem.getItem().setTagCompound(itemStack.getTagCompound().copy());
                 }
 
-                float factor = 0.05F;
+                float factor = 0.05f;
                 entityItem.motionX = rand.nextGaussian() * factor;
-                entityItem.motionY = rand.nextGaussian() * factor + 0.2F;
+                entityItem.motionY = rand.nextGaussian() * factor + 0.2f;
                 entityItem.motionZ = rand.nextGaussian() * factor;
                 world.spawnEntity(entityItem);
                 itemStack.setCount(0);
@@ -119,6 +119,6 @@ public class BlockRay extends Block implements ItemModelProvider
     @Override
     public void registerItemModel(Item itemBlock)
     {
-        RayCore.proxy.registerItemRenderer(itemBlock, 0, modID, getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+        RayCore.proxy.registerItemRenderer(itemBlock, 0, modID, getUnwrappedUnlocalizedName(super.getTranslationKey()));
     }
 }

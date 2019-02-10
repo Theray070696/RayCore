@@ -240,7 +240,7 @@ public class FastTemplatePlacer
             {
                 NBTTagCompound compound = entityInfo.entityData;
                 Vec3d vec3D = transformedVec3d(entityInfo.pos, mirror, rotation);
-                Vec3d vec3D1 = vec3D.addVector((double) pos.getX(), (double) pos.getY(), (double) pos.getZ());
+                Vec3d vec3D1 = vec3D.add((double) pos.getX(), (double) pos.getY(), (double) pos.getZ());
                 NBTTagList tagList = new NBTTagList();
                 tagList.appendTag(new NBTTagDouble(vec3D1.x));
                 tagList.appendTag(new NBTTagDouble(vec3D1.y));

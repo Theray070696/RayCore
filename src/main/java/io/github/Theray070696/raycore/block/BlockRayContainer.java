@@ -47,8 +47,8 @@ public abstract class BlockRayContainer extends BlockContainer implements ItemMo
         
         this.modID = modID;
         
-        this.setHardness(1.5F);
-        this.setResistance(10.0F);
+        this.setHardness(1.5f);
+        this.setResistance(10.0f);
         this.setSoundType(SoundType.METAL);
     }
 
@@ -58,17 +58,17 @@ public abstract class BlockRayContainer extends BlockContainer implements ItemMo
     }
 
     @Override
-    public Block setUnlocalizedName(String name)
+    public Block setTranslationKey(String name)
     {
-        super.setUnlocalizedName(name);
+        super.setTranslationKey(name);
         this.setRegistryName(modID + ":" + name.toLowerCase());
         return this;
     }
     
     @Override
-    public String getUnlocalizedName()
+    public String getTranslationKey()
     {
-        return String.format("tile.%s%s", this.modID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+        return String.format("tile.%s%s", this.modID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getTranslationKey()));
     }
     
     protected String getUnwrappedUnlocalizedName(String unlocalizedName)
@@ -102,9 +102,9 @@ public abstract class BlockRayContainer extends BlockContainer implements ItemMo
             {
                 Random rand = new Random();
                 
-                float dX = rand.nextFloat() * 0.8F + 0.1F;
-                float dY = rand.nextFloat() * 0.8F + 0.1F;
-                float dZ = rand.nextFloat() * 0.8F + 0.1F;
+                float dX = rand.nextFloat() * 0.8f + 0.1f;
+                float dY = rand.nextFloat() * 0.8f + 0.1f;
+                float dZ = rand.nextFloat() * 0.8f + 0.1f;
                 
                 EntityItem entityItem = new EntityItem(world, blockPos.getX() + dX, blockPos.getY() + dY, blockPos.getZ() + dZ, itemStack.copy());
                 
@@ -113,9 +113,9 @@ public abstract class BlockRayContainer extends BlockContainer implements ItemMo
                     entityItem.getItem().setTagCompound(itemStack.getTagCompound().copy());
                 }
                 
-                float factor = 0.05F;
+                float factor = 0.05f;
                 entityItem.motionX = rand.nextGaussian() * factor;
-                entityItem.motionY = rand.nextGaussian() * factor + 0.2F;
+                entityItem.motionY = rand.nextGaussian() * factor + 0.2f;
                 entityItem.motionZ = rand.nextGaussian() * factor;
                 world.spawnEntity(entityItem);
                 itemStack.setCount(0);
@@ -126,6 +126,6 @@ public abstract class BlockRayContainer extends BlockContainer implements ItemMo
     @Override
     public void registerItemModel(Item itemBlock)
     {
-        RayCore.proxy.registerItemRenderer(itemBlock, 0, modID, getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+        RayCore.proxy.registerItemRenderer(itemBlock, 0, modID, getUnwrappedUnlocalizedName(super.getTranslationKey()));
     }
 }

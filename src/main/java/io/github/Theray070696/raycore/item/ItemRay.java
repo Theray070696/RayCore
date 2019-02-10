@@ -28,23 +28,23 @@ public class ItemRay extends Item implements ItemModelProvider
     }
 
     @Override
-    public Item setUnlocalizedName(String name)
+    public Item setTranslationKey(String name)
     {
-        super.setUnlocalizedName(name);
+        super.setTranslationKey(name);
         this.setRegistryName(modID + ":" + name.toLowerCase());
         return this;
     }
 
     @Override
-    public String getUnlocalizedName()
+    public String getTranslationKey()
     {
-        return String.format("item.%s%s", this.modID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+        return String.format("item.%s%s", this.modID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getTranslationKey()));
     }
 
     @Override
-    public String getUnlocalizedName(ItemStack itemStack)
+    public String getTranslationKey(ItemStack itemStack)
     {
-        return String.format("item.%s%s", this.modID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+        return String.format("item.%s%s", this.modID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getTranslationKey()));
     }
 
     protected String getUnwrappedUnlocalizedName(String unlocalizedName)
@@ -54,13 +54,13 @@ public class ItemRay extends Item implements ItemModelProvider
 
     protected String getUnwrappedUnlocalizedName()
     {
-        return super.getUnlocalizedName().substring(super.getUnlocalizedName().indexOf(".") + 1);
+        return super.getTranslationKey().substring(super.getTranslationKey().indexOf(".") + 1);
     }
 
     @Override
     public void registerItemModel(Item item)
     {
-        RayCore.proxy.registerItemRenderer(this, 0, modID, getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+        RayCore.proxy.registerItemRenderer(this, 0, modID, getUnwrappedUnlocalizedName(super.getTranslationKey()));
     }
 
     public int getMaxMetadata()

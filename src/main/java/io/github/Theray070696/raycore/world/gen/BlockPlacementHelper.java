@@ -42,7 +42,7 @@ public class BlockPlacementHelper
             return false;
         } else
         {
-            Chunk chunk = world.getChunkFromBlockCoords(pos);
+            Chunk chunk = world.getChunk(pos);
 
             net.minecraftforge.common.util.BlockSnapshot blockSnapshot = null;
             if(world.captureBlockSnapshots && !world.isRemote)
