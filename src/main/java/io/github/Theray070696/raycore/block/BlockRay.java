@@ -116,6 +116,13 @@ public class BlockRay extends Block implements ItemModelProvider
         }
     }
 
+    public BlockRay setSoundType(SoundType soundType)
+    {
+        super.setSoundType(soundType);
+
+        return this;
+    }
+
     @Override
     public void registerItemModel(Item itemBlock)
     {
